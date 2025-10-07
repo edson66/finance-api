@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -27,14 +28,14 @@ public class Usuario implements UserDetails {
     private String login;
     private String senha;
 
-    public Usuario(@Valid DadosCadastroUsuario dados) {
+    public Usuario(@Valid DadosCadastroUsuario dados,String senhaCodificada) {
         this.login = dados.login();
-        this.senha = dados.senha();
+        this.senha = senhaCodificada;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority("ROLE_USUARIO"));
     }
 
     @Override
