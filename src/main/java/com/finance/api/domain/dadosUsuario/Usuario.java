@@ -3,6 +3,7 @@ package com.finance.api.domain.dadosUsuario;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,6 +32,10 @@ public class Usuario implements UserDetails {
     public Usuario(@Valid DadosCadastroUsuario dados,String senhaCodificada) {
         this.login = dados.login();
         this.senha = senhaCodificada;
+    }
+
+    public Usuario(@NotBlank String login) {
+        this.login = login;
     }
 
     @Override
