@@ -19,7 +19,7 @@ public class UsuarioService {
         var senhaCodificada = encoder.encode(dados.senha());
         var usuario = new Usuario(dados,senhaCodificada);
         repository.save(usuario);
-        var dto = new DadosCompletosUsuario(usuario);
-        return dto;
+
+        return new DadosCompletosUsuario(usuario);
     }
 }

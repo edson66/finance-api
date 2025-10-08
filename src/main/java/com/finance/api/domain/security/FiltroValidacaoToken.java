@@ -34,6 +34,7 @@ public class FiltroValidacaoToken extends OncePerRequestFilter {
 
             var authorization = new UsernamePasswordAuthenticationToken(usuario,null,usuario.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authorization);
+
         }
 
         filterChain.doFilter(request,response);
