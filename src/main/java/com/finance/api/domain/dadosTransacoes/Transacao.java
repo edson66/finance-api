@@ -33,4 +33,19 @@ public class Transacao {
         this.data = dados.data();
         this.tipo = dados.tipo();
     }
+
+    public void atualizarInformacoes(@Valid DadosCompletosTransacao dados) {
+        if (dados.descricao() != null){
+            this.descricao = dados.descricao();
+        }
+        if (dados.valor() != null){
+            this.valor = dados.valor();
+        }
+        if (dados.data() != null){
+            this.data = dados.data();
+        }
+        if (dados.tipo() != null){
+            this.tipo = dados.tipo();
+        }
+    }
 }
