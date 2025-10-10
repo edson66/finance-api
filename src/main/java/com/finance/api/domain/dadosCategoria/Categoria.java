@@ -18,5 +18,6 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_categoria")
     private TipoCategorias tipoCategoria;
 }

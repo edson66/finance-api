@@ -1,6 +1,7 @@
 package com.finance.api.domain.dadosTransacoes;
 
 import com.finance.api.domain.dadosCategoria.Categoria;
+import com.finance.api.domain.dadosUsuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -30,16 +31,20 @@ public class Transacao {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-    public Transacao(@Valid DadosCadastroTransacoes dados, Categoria categoria) {
+    public Transacao(@Valid DadosCadastroTransacoes dados, Categoria categoria,Usuario usuario) {
         this.descricao = dados.descricao();
         this.valor = dados.valor();
         this.data = dados.data();
         this.tipo = dados.tipo();
         this.categoria = categoria;
+        this.usuario = usuario;
     }
 
-    public void atualizarInformacoes(@Valid DadosCompletosTransacao dados,Categoria categoria) {
+    public void atualizarInformacoes(@Valid DadosAtualizacaoTransacao dados, Categoria categoria) {
         if (dados.descricao() != null){
             this.descricao = dados.descricao();
         }

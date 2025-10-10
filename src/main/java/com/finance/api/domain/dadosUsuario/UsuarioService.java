@@ -1,5 +1,7 @@
 package com.finance.api.domain.dadosUsuario;
 
+import com.finance.api.domain.security.FiltroValidacaoToken;
+import com.finance.api.domain.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
+
     @Transactional
     public DadosCompletosUsuario cadastrar(DadosCadastroUsuario dados){
         var senhaCodificada = encoder.encode(dados.senha());
@@ -22,4 +25,5 @@ public class UsuarioService {
 
         return new DadosCompletosUsuario(usuario);
     }
+
 }

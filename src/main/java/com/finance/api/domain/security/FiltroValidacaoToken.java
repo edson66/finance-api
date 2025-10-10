@@ -1,5 +1,6 @@
 package com.finance.api.domain.security;
 
+import com.finance.api.domain.dadosUsuario.Usuario;
 import com.finance.api.domain.dadosUsuario.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -48,4 +49,5 @@ public class FiltroValidacaoToken extends OncePerRequestFilter {
         }
         return null;
     }
+
 }
