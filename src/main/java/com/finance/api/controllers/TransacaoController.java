@@ -1,6 +1,7 @@
 package com.finance.api.controllers;
 
 
+import com.finance.api.domain.dadosCategoria.CategoriaService;
 import com.finance.api.domain.dadosTransacoes.DadosCadastroTransacoes;
 import com.finance.api.domain.dadosTransacoes.DadosCompletosTransacao;
 import com.finance.api.domain.dadosTransacoes.Transacao;
@@ -21,12 +22,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class TransacaoController {
 
     @Autowired
+    private CategoriaService categoriaService;
+
+    @Autowired
     private TransacaoRepository repository;
 
     @PostMapping
     @Transactional
     public ResponseEntity postarTransacao(@RequestBody @Valid DadosCadastroTransacoes dados, UriComponentsBuilder uriBulder){
-        var transacao = new Transacao(dados);
+        var categoria = categoriaService.buscarCategoria(dados.tipoCategoria());
+        var transacao = new Transacao(dados,categoria);
         repository.save(transacao);
 
         var uri = uriBulder.path("/transacoes/{id}").buildAndExpand(transacao.getId()).toUri();
@@ -52,13 +57,15 @@ public class TransacaoController {
     @PutMapping
     @Transactional
     public ResponseEntity atualizarTransacao(@RequestBody @Valid DadosCompletosTransacao dados){
+        var categoria = categoriaService.buscarCategoria(dados.tipoCategoria());
         var transacao = repository.findById(dados.id()).get();
-        transacao.atualizarInformacoes(dados);
+        transacao.atualizarInformacoes(dados,categoria);
+
 
         return ResponseEntity.ok(new DadosCompletosTransacao(transacao));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity deletarTransacao(@PathVariable Long id){
         var transacao = repository.getReferenceById(id);

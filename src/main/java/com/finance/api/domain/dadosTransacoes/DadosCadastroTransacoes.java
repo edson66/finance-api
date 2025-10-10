@@ -1,5 +1,6 @@
 package com.finance.api.domain.dadosTransacoes;
 
+import com.finance.api.domain.dadosCategoria.TipoCategorias;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -16,6 +17,8 @@ public record DadosCadastroTransacoes(
         @Past
         LocalDateTime data,
         @NotNull
-        Tipo tipo
+        Tipo tipo,
+        @NotNull
+        TipoCategorias tipoCategoria
 ) {
 }
