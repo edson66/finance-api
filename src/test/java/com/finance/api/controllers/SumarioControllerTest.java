@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -54,7 +55,7 @@ class SumarioControllerTest {
 
         List<Transacao> transacoes = List.of(transacaoMock);
 
-        when(repository.findByUsuarioAndDataBetween(any(Usuario.class),any(LocalDateTime.class),any(LocalDateTime.class))).thenReturn(transacoes);
+        when(repository.findByUsuarioAndDataBetween(isNull(),any(LocalDateTime.class),any(LocalDateTime.class))).thenReturn(transacoes);
 
 
         mvc.perform(get("/sumario/por-data?dataInicio=2025-10-05&dataFinal=2025-10-10"))
