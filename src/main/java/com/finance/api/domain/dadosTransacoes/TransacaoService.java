@@ -12,6 +12,10 @@ public class TransacaoService {
         BigDecimal valorReceita = BigDecimal.ZERO;
         BigDecimal valorDespesas = BigDecimal.ZERO;
 
+        if (transacoes.isEmpty()){
+            throw new RuntimeException("Você não possui transações ativas");
+        }
+
         for(Transacao transacao : transacoes){
             if (transacao.getTipo() == Tipo.RECEITA){
                 valorReceita = valorReceita.add(transacao.getValor());
