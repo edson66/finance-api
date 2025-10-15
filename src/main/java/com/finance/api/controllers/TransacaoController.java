@@ -4,6 +4,7 @@ package com.finance.api.controllers;
 import com.finance.api.domain.dadosCategoria.CategoriaService;
 import com.finance.api.domain.dadosTransacoes.*;
 import com.finance.api.domain.dadosUsuario.Usuario;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/transacoes")
+@SecurityRequirement(name = "bearer-key")
 public class TransacaoController {
 
     @Autowired

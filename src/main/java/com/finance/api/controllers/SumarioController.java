@@ -4,6 +4,7 @@ package com.finance.api.controllers;
 import com.finance.api.domain.dadosTransacoes.TransacaoRepository;
 import com.finance.api.domain.dadosTransacoes.TransacaoService;
 import com.finance.api.domain.dadosUsuario.Usuario;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.time.LocalTime;
 
 @RestController
 @RequestMapping("/sumario")
+@SecurityRequirement(name = "bearer-key")
 public class SumarioController {
 
     @Autowired

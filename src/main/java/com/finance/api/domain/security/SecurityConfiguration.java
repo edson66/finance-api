@@ -30,6 +30,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(a -> {
                     a.requestMatchers(HttpMethod.POST,"/usuarios/login").permitAll();
                     a.requestMatchers(HttpMethod.POST,"/usuarios/cadastro").permitAll();
+                    a.requestMatchers("/swagger-ui.html","/swagger-ui/**").permitAll();
+                    a.requestMatchers("/v3/api-docs/**").permitAll();
                     a.anyRequest().authenticated();
                 })
 
