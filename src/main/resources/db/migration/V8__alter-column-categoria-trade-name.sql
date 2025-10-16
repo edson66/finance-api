@@ -1,0 +1,1 @@
+alter table categorias rename column categoria to tipo_categoria;
