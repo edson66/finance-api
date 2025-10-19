@@ -1,0 +1,37 @@
+version: '3.8'
+
+
+services:
+
+
+  db:
+    image: mysql:8.0
+    container_name: finance-db-local
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: finance-api-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+
+  api:
+    build: .
+    container_name: finance-api-local
+    restart: on-failure
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DATASOURCE_URL: jdbc:mysql://db:3306/finance-api-db?allowPublicKeyRetrieval=true&useSSL=false
+      DATASOURCE_USERNAME: root
+      DATASOURCE_PASSWORD: root
+      TOKEN_SENHA: 222222
+
+
+volumes:
+  db_data:
