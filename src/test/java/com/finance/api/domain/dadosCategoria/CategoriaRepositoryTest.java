@@ -6,24 +6,23 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
+@Transactional
 class CategoriaRepositoryTest {
 
     @Autowired
     private CategoriaRepository repository;
 
-    @Autowired
-    private TestEntityManager em;
 
     @Test
     void findByTipoCategoria() {
-        Categoria categoria = new Categoria(null,TipoCategorias.ALIMENTACAO);
-        em.persist(categoria);
+
 
         Categoria resultado = repository.findByTipoCategoria(TipoCategorias.ALIMENTACAO);
 
