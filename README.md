@@ -45,6 +45,7 @@ Toda a API está documentada e pode ser testada interativamente através do Swag
 
 No seu dispositivo,acesse:
 ➡️ **[https://api.finance-app-edson.uk/swagger-ui.html](https://api.finance-app-edson.uk/swagger-ui.html)**
+(Essa alternativa costuma ter um tempo de processamento aproximado de 1 minuto até que o tunel cloudflare saia do modo de descanso)
 
 Com a aplicação rodando localmente, acesse:
 ➡️ **[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)**
@@ -98,4 +99,5 @@ De forma geral, após seguir as instruções do arquivo, o comando para iniciar 
 
 ```bash
 docker-compose up --build
+
 
