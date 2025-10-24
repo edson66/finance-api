@@ -45,7 +45,7 @@ Toda a API está documentada e pode ser testada interativamente através do Swag
 
 No seu dispositivo,acesse:
 ➡️ **[https://api.finance-app-edson.uk/swagger-ui.html](https://api.finance-app-edson.uk/swagger-ui.html)**
-(Essa alternativa costuma ter um tempo de processamento aproximado de 1 minuto até que o tunel cloudflare saia do modo de descanso)
+*(Nota: A API roda na AWS ECS. O carregamento inicial, especialmente da página do Swagger, pode levar até 1 minuto enquanto a aplicação Spring Boot inicializa completamente e processa a primeira requisição. Se encontrar um erro 502 inicial, por favor, aguarde e atualize a página.)*
 
 Com a aplicação rodando localmente, acesse:
 ➡️ **[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)**
@@ -99,5 +99,6 @@ De forma geral, após seguir as instruções do arquivo, o comando para iniciar 
 
 ```bash
 docker-compose up --build
+
 
 
