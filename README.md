@@ -43,6 +43,9 @@ Esta API gerencia:
 
 Toda a API está documentada e pode ser testada interativamente através do Swagger UI.
 
+No seu dispositivo,acesse:
+➡️ **[https://api.finance-app-edson.uk/swagger-ui.html](https://api.finance-app-edson.uk/swagger-ui.html)**
+
 Com a aplicação rodando localmente, acesse:
 ➡️ **[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)**
 
@@ -95,3 +98,4 @@ De forma geral, após seguir as instruções do arquivo, o comando para iniciar 
 
 ```bash
 docker-compose up --build
+
