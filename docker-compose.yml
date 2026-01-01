@@ -8,13 +8,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: finance-api-db
-    command: --innodb-buffer-pool-size=128M
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
     deploy:
       resources:
         limits:
-          memory: 256M
-    volumes:
-      - db_data:/var/lib/mysql
+          memory: 400m
 
   api:
     build: .
@@ -33,7 +34,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512M
+          memory: 512m
 
 volumes:
   db_data:
