@@ -36,7 +36,7 @@ Esta API gerencia:
 * **Swagger / Springdoc-openapi** (Documentação da API)
 * **JUnit 5** (Testes)
 * **Docker** (Containerização)
-* **AWS ECS** (Hospedagem e Deploy)
+* **AWS EC2** (Hospedagem e Deploy)
 * **Mysql** (Banco de Dados)
 
 ##  Documentação da API (Swagger)
@@ -97,6 +97,7 @@ De forma geral, após seguir as instruções do arquivo, o comando para iniciar 
 
 ```bash
 docker-compose up --build
+
 
 
 
