@@ -5,17 +5,19 @@ services:
     image: mysql:8.0
     container_name: finance-db
     restart: always
+    command:
+      --innodb-buffer-pool-size=128M
+      --max-connections=50
+      --performance-schema=OFF
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: finance-api-db
-    ports:
-      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
     deploy:
       resources:
         limits:
-          memory: 400m
+          memory: 300m
 
   api:
     build: .
