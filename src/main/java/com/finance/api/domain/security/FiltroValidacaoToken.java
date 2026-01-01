@@ -27,6 +27,13 @@ public class FiltroValidacaoToken extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
+        String path = request.getRequestURI();
+
+        if (path.equals("/usuarios/login") || path.equals("/usuarios/cadastro")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         var tokenJWT = pegarToken(request);
 
         if (tokenJWT != null) {

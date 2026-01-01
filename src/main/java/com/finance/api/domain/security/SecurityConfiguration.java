@@ -64,8 +64,12 @@ public class SecurityConfiguration {
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173","http://ec2-3-145-53-92.us-east-2.compute.amazonaws.com"
-        ,"https://projeto-finance-front.vercel.app/"));
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:5173",
+                "https://projeto-finance-front.vercel.app",
+                "https://finance-app-edson.uk",
+                "https://www.finance-app-edson.uk"
+        ));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
 
